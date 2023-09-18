@@ -5,7 +5,7 @@ import { createProduct, deleteProduct, getProduct, updateProduct } from '../cont
 const productRouter = express.Router()
 productRouter.post('/api/products',createProduct)
 productRouter.get('/api/products',getProduct)
-productRouter.put('/api/products',updateProduct)
+productRouter.put('/api/products/:id',updateProduct)
 productRouter.delete('/api/products/:id',deleteProduct)
 
 

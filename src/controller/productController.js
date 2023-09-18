@@ -15,8 +15,10 @@ async function getProduct(req,res){
 }
 
 async function updateProduct(req,res){
-    const{rows} = await database.query("SELECT * FROM products");
-    res.status(200).json({message:'product fetched successfully',body:{rows}});
+    const productid = parseInt(req.params.id)
+    const { productname, quantity, price} = req.body
+    const{rows} = await database.query("UPDATE products SET productname= $1 , quantity= $2, price=$3 WHERE productid = $4",[productname,quantity,price,productid]);
+    res.status(200).json({message:'product updated successfully',body:{rows}});
 }
 
 async function deleteProduct(req,res){
